@@ -16,7 +16,8 @@
     "start:mobile": "ionic capacitor run -l --external",
     "build:mobile": "ionic capacitor build --prod",
     "build:apk": "ionic capacitor build android --prod --release --no-open && cd android && ./gradlew assembleRelease && (path-exists androidKeyStore.keystore || keytool -genkey -v -keystore androidKeyStore.keystore -alias androidKeyStore -keyalg RSA -keysize 2048 -validity 10000) && java -jar apksigner.jar -ks androidKeyStore.keystore -a app/build/outputs/apk/release/app-release-unsigned.apk -ksAlias androidKeyStore",
-    "compile:apk": "ionic capacitor build android --info --no-build --prod --release --no-open && cd android && ./gradlew assembleRelease && (path-exists androidKeyStore.keystore || keytool -genkey -v -keystore androidKeyStore.keystore -alias androidKeyStore -keyalg RSA -keysize 2048 -validity 10000) && java -jar apksigner.jar -ks androidKeyStore.keystore -a app/build/outputs/apk/release/app-release-unsigned.apk -ksAlias androidKeyStore"
+    "compile:apk": "ionic capacitor build android --info --no-build --prod --release --no-open && cd android && ./gradlew assembleRelease && (path-exists androidKeyStore.keystore || keytool -genkey -v -keystore androidKeyStore.keystore -alias androidKeyStore -keyalg RSA -keysize 2048 -validity 10000) && java -jar apksigner.jar -ks androidKeyStore.keystore -a app/build/outputs/apk/release/app-release-unsigned.apk -ksAlias androidKeyStore",
+    "generate-types": "typechain --target=ethers-v6 'src/abis/*.json' --out-dir=src/typechains"
   },
   "dependencies": {
     "@awesome-cordova-plugins/app-version": "^5.41.0",
@@ -157,7 +158,8 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4",
-    "workbox-webpack-plugin": "^6.4.1"
+    "workbox-webpack-plugin": "^6.4.1",
+    "ethers": "^6.12.1"
   },
   "eslintConfig": {
     "extends": [
@@ -186,7 +188,9 @@
     "autoprefixer": "^10.4.2",
     "path-exists-cli": "^2.0.0",
     "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.18",
+    "@typechain/ethers-v6": "^0.5.1",
+    "typechain": "^8.3.2"
   },
   "jest": {
     "roots": [
